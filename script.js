@@ -20,8 +20,31 @@ document.addEventListener("DOMContentLoaded", () => {
 fetch('markdown.txt')
   .then(response => response.text())
   .then(text => {
-    // Split paragraphs by double newlines
-    const paragraphs = text.trim().split(/\n\s*\n/);
-    const container = document.getElementById('about-paragraphs');
-    container.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+    // Split paragraphs by semicolon and trim
+    const paragraphs = text
+      .split(';')
+      .map(p => p.trim())
+      .filter(p => p.length > 0);
+
+    // Fill about paragraphs
+    if (paragraphs[0]) document.getElementById('about-paragraph-1').innerHTML = paragraphs[0].replace(/\n/g, '<br>');
+    if (paragraphs[1]) document.getElementById('about-paragraph-2').innerHTML = paragraphs[1].replace(/\n/g, '<br>');
+    if (paragraphs[2]) document.getElementById('about-paragraph-3').innerHTML = paragraphs[2].replace(/\n/g, '<br>');
+    if (paragraphs[3]) document.getElementById('about-paragraph-4').innerHTML = paragraphs[3].replace(/\n/g, '<br>');
+
+    // Fill offers list
+    const offersList = document.getElementById('offers-list');
+    if (offersList) {
+      // Offers start at paragraphs[4]
+      for (let i = 4; i < paragraphs.length; i += 2) {
+        if (paragraphs[i] && paragraphs[i + 1]) {
+          // paragraphs[i] is the label, paragraphs[i+1] is the description
+          const label = paragraphs[i].replace(':', '').trim();
+          const desc = paragraphs[i + 1].trim();
+          const li = document.createElement('li');
+          li.innerHTML = `<strong>${label}:</strong> ${desc}`;
+          offersList.appendChild(li);
+        }
+      }
+    }
   });
