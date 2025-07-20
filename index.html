@@ -2,51 +2,124 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Firmea.cz (Demo Layout)</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firmea s.r.o.</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
+  <!-- Top Info Bar -->
+  <div class="top-bar">
     <div class="container">
-      <h1>Firmea.cz</h1>
+      <span>Pražská 37/45, 301 00 Plzeň - Východní Předměstí</span>
+      <div>
+        <span><strong>Otevírací doba:</strong> Po–Pá 8:00 – 15:30</span>
+        <span><strong>Kontakt:</strong> +420 377 236 575</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <img src="logo.png" alt="Firmea Logo" class="logo" />
       <nav>
-        <a href="#">Firmy</a>
-        <a href="#">Kategorie</a>
+        <a href="#">Domů</a>
+        <a href="#">O nás</a>
+        <a href="#">Služby</a>
+        <a href="#">Ceník</a>
+        <a href="#">Blog</a>
         <a href="#">Kontakt</a>
       </nav>
     </div>
   </header>
 
-  <section class="search-section">
-    <div class="container">
-      <input type="text" placeholder="Hledat firmu nebo IČO..." />
-      <button>Hledat</button>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1>Firmea s.r.o.</h1>
+      <p>Nabízíme komplexní účetní a daňové služby v Plzni a okolí.</p>
+      <a href="#" class="btn">Kontakt</a>
     </div>
   </section>
 
-  <section class="categories">
-    <div class="container">
-      <h2>Populární kategorie</h2>
-      <div class="category-list">
-        <a href="#">Restaurace</a>
-        <a href="#">Stavebnictví</a>
-        <a href="#">IT služby</a>
-        <a href="#">Zdravotnictví</a>
+  <!-- About Section -->
+  <section class="about">
+    <div class="container about-content">
+      <div class="text">
+        <h2>FIRMEA S.R.O.</h2>
+        <p><strong>Přenechte starosti s účetnictvím a daněmi na nás!</strong></p>
+        <p>Firmea s.r.o. poskytuje komplexní účetní a daňové služby již od roku 2010. Spolupracujeme s malými firmami i většími společnostmi. Pomáháme s DPH, účetnictvím, daňovým poradenstvím a dalšími službami.</p>
+        <a href="#" class="more-info">Více informací</a>
+      </div>
+      <div class="image">
+        <img src="about-image.png" alt="Team Illustration" />
       </div>
     </div>
   </section>
 
-  <section class="info">
-    <div class="container">
-      <h2>O Firmea.cz</h2>
-      <p>Tento web slouží jako přehledný katalog českých firem. Vyhledávejte podle názvu, IČO nebo kategorie.</p>
+  <!-- Features -->
+  <section class="features">
+    <div class="container features-grid">
+      <div class="feature"><img src="icon1.png" alt /><h3>Návrh řešení</h3><p>Individuální přístup k potřebám klienta.</p></div>
+      <div class="feature"><img src="icon2.png" alt /><h3>Flexibilita</h3><p>Rychlá reakce a přizpůsobení.</p></div>
+      <div class="feature"><img src="icon3.png" alt /><h3>Zkušenosti</h3><p>Profesionální tým s dlouholetou praxí.</p></div>
+      <div class="feature"><img src="icon4.png" alt /><h3>Vzdělání</h3><p>Průběžné školení a aktuální znalosti.</p></div>
     </div>
   </section>
 
-  <footer>
+  <!-- Contact CTA -->
+  <div class="contact-cta">
+    <a href="#" class="btn">Kontakt</a>
+  </div>
+
+  <!-- References -->
+  <section class="references">
     <div class="container">
-      <p>&copy; 2025 Firmea.cz – Všechna práva vyhrazena</p>
+      <h2>Reference</h2>
+      <div class="reference-slider">
+        <div class="reference">„HANSA – FLEX spol. s r. o.“</div>
+        <div class="reference">„MURRELEKTRONIK CZ, spol. s r. o.“</div>
+        <div class="reference">„PEBA s.r.o.“</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <img src="logo-footer.png" alt="Logo" class="logo" />
+        <p>Cílem společnosti je spokojenost zákazníků a vytváření podmínek pro dlouhodobou spolupráci.</p>
+        <div class="socials">Sledujte nás: [ikony]</div>
+      </div>
+      <div>
+        <h4>Firmea s.r.o.</h4>
+        <p>Pražská 37/45<br>301 00 Plzeň – Východní Předměstí<br>+420 377 236 575<br><a href="mailto:firmea@firmea.cz">firmea@firmea.cz</a></p>
+        <p>Po – Pá: 8:00 – 15:30<br>So – Ne: Zavřeno</p>
+      </div>
+      <div>
+        <h4>Naše služby</h4>
+        <ul>
+          <li>Účetnictví</li>
+          <li>Daňové poradenství</li>
+          <li>Audit</li>
+          <li>Zastupování před úřady</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Náš servis</h4>
+        <ul>
+          <li>Rychlost</li>
+          <li>Lojalnost</li>
+          <li>Flexibilita</li>
+          <li>Zkušenosti</li>
+          <li>Návrh řešení</li>
+          <li>Proaktivní přístup</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2019 REDAYALL</p>
     </div>
   </footer>
 </body>
