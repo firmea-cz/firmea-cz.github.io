@@ -63,20 +63,21 @@
   <section id="about" style="display: none;">
     <div class="container">
       <h2>O nás</h2>
-      <p>Jsme firma poskytující ekonomické služby právnickým osobám různých právních forem i předmětů podnikání. Máme zkušenosti se službami v oblasti auditu, účetnictví, mzdové agendy a daní.</p>
+      <h3>Firmea s.r.o.</h3>
+      <div id="about-paragraphs"></div>
 
       <div class="about-grid">
         <img src="data/uploads/imanager/1.17/tn_451642-PEZYQN-621.jpg" alt="Tým" />
         <div>
           <h3>Daňové a účetní poradenství</h3>
-          <p>Pomáháme klientům s optimalizací a správou daní v souladu s legislativou. Naším cílem je úspora času i peněz.</p>
+          <p>Naší formou práce je pravidelný přímý kontakt s klientem uskutečňovaný zejména formou konzultací k účetním a daňovým problémům a dokonalá znalost místních podmínek. Mezi klienty patří fyzické i právnické osoby, obchodní korporace, osobní obchodní společnosti.  Cílem v oblasti daní je pomoci klientovi najít pro něj optimální a časově přijatelné řešení v návaznosti na daňovou legislativu a tím mu ušetřit čas a prostředky nutné pro jeho činnost.</p>
         </div>
       </div>
 
       <div class="about-grid reverse">
         <div>
           <h3>Audit</h3>
-          <p>Provádíme ověřování účetních závěrek a pomáháme klientům s nápravou zjištěných nedostatků.</p>
+          <p>Provádíme ověřování účetních závěrek, výročních zpráv a zpráv o vztazích mezi propojenými osobami. Při naší práci klademe důraz na využití poznatků získaných v průběhu auditu ve prospěch klienta, pro nápravu zjištěných nedostatků a optimalizaci. Mezi naše klienty patří společnosti z nejrůznějších oborů, zejména podnikatelské subjekty působící v různých odvětvích výrobního a zpracovatelského průmyslu, obchodu a služeb. Splňujeme veškeré zákonné povinnosti a dodržujeme Mezinárodní auditorské standardy.</p>
         </div>
         <img src="data/uploads/imanager/1.17/268818-P5609W-768.jpg" alt="Audit" />
       </div>
@@ -85,7 +86,7 @@
         <img src="data/uploads/imanager/1.17/tn_3103.jpg" alt="Účetnictví" />
         <div>
           <h3>Účetnictví a mzdy</h3>
-          <p>Zpracujeme veškerou účetní a mzdovou agendu dle požadavků klienta včetně on-line spolupráce.</p>
+          <p>Kompletně zpracujeme veškerou účetní a mzdovou agendu od prvotních dokladů po sestavení účetní závěrky a daňových přiznání. Veškeré služby provádíme individuálně na míru požadavkům každého klienta, průběžně poskytujeme aktuální informace o stavu pohledávek a závazků klientů v souladu s jejich požadavky. V případě potřeby pracujeme on-line na softwaru klienta.</p>
         </div>
       </div>
 
@@ -118,6 +119,19 @@
         }
       });
     }
+  </script>
+
+  <!-- Add this script before </body> -->
+  <script>
+    // Fetch and display paragraphs from markdown.txt in the #about section
+    fetch('markdown.txt')
+      .then(response => response.text())
+      .then(text => {
+        // Split paragraphs by double newlines
+        const paragraphs = text.trim().split(/\n\s*\n/);
+        const container = document.getElementById('about-paragraphs');
+        container.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+      });
   </script>
 
 </body>

@@ -15,3 +15,13 @@ function showSection(id, el) {
 document.addEventListener("DOMContentLoaded", () => {
   showSection('home', document.querySelector("nav a"));
 });
+
+// Fetch and display paragraphs from markdown.txt in the #about section
+fetch('markdown.txt')
+  .then(response => response.text())
+  .then(text => {
+    // Split paragraphs by double newlines
+    const paragraphs = text.trim().split(/\n\s*\n/);
+    const container = document.getElementById('about-paragraphs');
+    container.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+  });
