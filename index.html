@@ -2,7 +2,7 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Firmea s.r.o.</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -11,100 +11,114 @@
   <!-- Top Bar -->
   <div class="top-bar">
     <div class="container">
-      <div class="top-left">
-        Pražská 37/45, 301 00 Plzeň – Východní Předměstí
-      </div>
-      <div class="top-right">
-        Po–Pá 8:00–15:30 &nbsp;|&nbsp; +420 377 236 575
-      </div>
+      <span>Pražská 37/45, 301 00 Plzeň – Východní Předměstí</span>
+      <span>Po–Pá 8:00–15:30 | +420 377 236 575</span>
     </div>
   </div>
 
-  <!-- Header -->
-  <header>
-    <div class="container header-content">
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container nav">
       <div class="logo">FIRMEA</div>
-      <nav class="nav-menu">
-        <a href="#">Úvod</a>
-        <a href="#">O nás</a>
-        <a href="#">Služby</a>
-        <a href="#">Ceník</a>
-        <a href="#">Kontakt</a>
+      <nav>
+        <a href="#" onclick="showSection('home')">Domů</a>
+        <a href="#" onclick="showSection('about')">O nás</a>
+        <a href="#" onclick="showSection('services')">Služby</a>
+        <a href="#" onclick="showSection('contact')">Kontakt</a>
+        <a href="#" onclick="showSection('blog')">Blog</a>
+        <a href="#" onclick="showSection('pricing')">Ceník</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>Firmea s.r.o.</h1>
-      <p>Účetnictví a daňové poradenství v Plzni a okolí</p>
-      <a href="#" class="btn">Kontaktujte nás</a>
+  <!-- SECTION: HOME -->
+  <section id="home">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Firmea s.r.o.</h1>
+        <p>Účetnictví, daně a mzdy pro podnikatele i společnosti</p>
+        <a href="#" class="btn">Kontaktujte nás</a>
+      </div>
+    </div>
+
+    <section class="info-boxes">
+      <div class="container grid">
+        <div class="box">
+          <h2>Účetnictví</h2>
+          <p>Kompletní vedení účetnictví včetně závěrek a přiznání.</p>
+        </div>
+        <div class="box">
+          <h2>Mzdy</h2>
+          <p>Zpracování mezd, personalistika a komunikace s úřady.</p>
+        </div>
+        <div class="box">
+          <h2>Daně</h2>
+          <p>Daňová přiznání, optimalizace a poradenství.</p>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- SECTION: ABOUT -->
+  <section id="about" style="display: none;">
+    <div class="container">
+      <h2>O nás</h2>
+      <p>Jsme firma poskytující ekonomické služby právnickým osobám různých právních forem i předmětů podnikání. Máme zkušenosti se službami v oblasti auditu, účetnictví, mzdové agendy a daní.</p>
+
+      <div class="about-grid">
+        <img src="data/uploads/imanager/1.17/tn_451642-PEZYQN-621.jpg" alt="Tým" />
+        <div>
+          <h3>Daňové a účetní poradenství</h3>
+          <p>Pomáháme klientům s optimalizací a správou daní v souladu s legislativou. Naším cílem je úspora času i peněz.</p>
+        </div>
+      </div>
+
+      <div class="about-grid reverse">
+        <div>
+          <h3>Audit</h3>
+          <p>Provádíme ověřování účetních závěrek a pomáháme klientům s nápravou zjištěných nedostatků.</p>
+        </div>
+        <img src="data/uploads/imanager/1.17/268818-P5609W-768.jpg" alt="Audit" />
+      </div>
+
+      <div class="about-grid">
+        <img src="data/uploads/imanager/1.17/tn_3103.jpg" alt="Účetnictví" />
+        <div>
+          <h3>Účetnictví a mzdy</h3>
+          <p>Zpracujeme veškerou účetní a mzdovou agendu dle požadavků klienta včetně on-line spolupráce.</p>
+        </div>
+      </div>
+
+      <h3>Co nabízíme</h3>
+      <ul class="offers">
+        <li><strong>Kvalita:</strong> Vysoká kvalita účetnictví za příznivou cenu.</li>
+        <li><strong>Jednání:</strong> Individuální přístup ke každému klientovi.</li>
+        <li><strong>Důvěra:</strong> Pojištění profesní odpovědnosti.</li>
+        <li><strong>Pohodlí:</strong> Vše vyřešíme za vás.</li>
+        <li><strong>Spolehlivost:</strong> Bez poplatků za převzetí účetnictví.</li>
+        <li><strong>Jistota:</strong> Daňové přiznání připravuje daňový poradce.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about">
-    <div class="container about-content">
-      <div class="about-text">
-        <h2>Komplexní služby pro vaše podnikání</h2>
-        <p>Společnost Firmea s.r.o. nabízí účetní a daňové služby s důrazem na individuální přístup, diskrétnost a spolehlivost.</p>
-        <a href="#" class="btn btn-small">Zjistit více</a>
-      </div>
-      <div class="about-image">
-        <img src="about.jpg" alt="Tým Firmea" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="features">
-    <div class="container features-grid">
-      <div class="feature">
-        <h3>Flexibilita</h3>
-        <p>Přizpůsobíme se potřebám vašeho podnikání.</p>
-      </div>
-      <div class="feature">
-        <h3>Zkušenosti</h3>
-        <p>Dlouholeté zkušenosti v oblasti účetnictví a daní.</p>
-      </div>
-      <div class="feature">
-        <h3>Diskrétnost</h3>
-        <p>Vaše údaje jsou u nás v bezpečí.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <h4>Firmea s.r.o.</h4>
-        <p>Pražská 37/45<br>301 00 Plzeň – Východní Předměstí<br>Tel: +420 377 236 575</p>
-        <p>Email: <a href="mailto:firmea@firmea.cz">firmea@firmea.cz</a></p>
-      </div>
-      <div>
-        <h4>Naše služby</h4>
-        <ul>
-          <li>Účetnictví</li>
-          <li>Mzdy</li>
-          <li>Daně</li>
-          <li>Poradenství</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Odkazy</h4>
-        <ul>
-          <li><a href="#">Úvod</a></li>
-          <li><a href="#">Kontakt</a></li>
-          <li><a href="#">Ceník</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2025 Firmea s.r.o. | Web vytvořen s pomocí AI
+    <div class="container footer-content">
+      <p>&copy; 2025 Firmea s.r.o. | Všechna práva vyhrazena</p>
+      <p>Email: <a href="mailto:firmea@firmea.cz">firmea@firmea.cz</a></p>
     </div>
   </footer>
+
+  <!-- SCRIPT: Section Switcher -->
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(section => {
+        if (section.id) {
+          section.style.display = section.id === id ? "block" : "none";
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
