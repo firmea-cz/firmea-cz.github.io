@@ -87,3 +87,42 @@ fetch('markdown.txt')
       }
     }
   });
+
+// BLOG SECTION: Load and render blog posts from blog.txt
+fetch('blog.txt')
+  .then(response => response.text())
+  .then(text => {
+    // Split blog posts by semicolon
+    const posts = text.split(';').map(p => p.trim()).filter(p => p.length > 0);
+    const blogEntries = document.getElementById('blog-entries');
+    if (!blogEntries) return;
+
+    blogEntries.innerHTML = posts.map(post => {
+      // Extract fields
+      const titleMatch = post.match(/"([^"]+)"/);
+      const authorMatch = post.match(/@([^@]+)@/);
+      const dateMatch = post.match(/\[([^\]]+)\]/);
+      const timeMatch = post.match(/\{([^\}]+)\}/);
+      const imageMatch = post.match(/<([^>]+)>/);
+      // Remove meta lines from content
+      let content = post
+        .replace(/"[^"]+"/, '')
+        .replace(/@[^@]+@/, '')
+        .replace(/\[[^\]]+\]/, '')
+        .replace(/\{[^\}]+\}/, '')
+        .replace(/<[^>]+>/, '')
+        .trim();
+
+      let html = `<div class="blog-post">`;
+      if (titleMatch) html += `<h3>${titleMatch[1]}</h3>`;
+      html += `<div class="blog-meta">`;
+      if (authorMatch) html += `<span class="blog-author">${authorMatch[1]}</span>`;
+      if (dateMatch) html += `<span class="blog-date">${dateMatch[1]}</span>`;
+      if (timeMatch) html += `<span class="blog-time">${timeMatch[1]}</span>`;
+      html += `</div>`;
+      if (imageMatch) html += `<img class="blog-image" src="assets/blog/${imageMatch[1]}" alt="">`;
+      html += `<div class="blog-content">${content.replace(/\n/g, '<br>')}</div>`;
+      html += `</div>`;
+      return html;
+    }).join('');
+  });

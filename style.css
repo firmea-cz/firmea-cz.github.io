@@ -162,3 +162,32 @@ footer a {
 .offers li {
   margin-bottom: 10px;
 }
+
+.blog-post {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.blog-post h3 {
+  margin-top: 0;
+  color: #004080;
+}
+.blog-meta {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.blog-meta span {
+  margin-right: 15px;
+}
+.blog-image {
+  max-width: 100%;
+  margin: 15px 0;
+  border-radius: 6px;
+}
+.blog-content {
+  font-size: 17px;
+  line-height: 1.7;
+}
