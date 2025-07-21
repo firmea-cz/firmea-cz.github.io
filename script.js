@@ -74,15 +74,26 @@ fetch('markdown.txt')
     if (paragraphs[10]) document.getElementById('about-paragraph-4').innerHTML = paragraphs[10].replace(/\n/g, '<br>');
 
     // --- OFFERS ---
+    const offerIconsArr = [
+      `<i class="fa fas fa-certificate pull-left circle"></i>`,
+      `<i class="fa fa-thumbs-up pull-left circle"></i>`,
+      `<i class="fa fas fa-deaf pull-left circle"></i>`,
+      `<i class="fa fas fa-check pull-left circle"></i>`,
+      `<i class="fa fa-book pull-left circle"></i>`,
+      `<i class="fa fas fa-check pull-left circle"></i>`
+    ];
+
     const offersList = document.getElementById('offers-list');
     if (offersList) {
+      let iconIdx = 0;
       for (let i = 11; i < paragraphs.length; i += 2) {
         if (paragraphs[i] && paragraphs[i + 1]) {
           const label = paragraphs[i].replace(':', '').trim();
           const desc = paragraphs[i + 1].trim();
           const li = document.createElement('li');
-          li.innerHTML = `<strong>${label}:</strong> ${desc}`;
+          li.innerHTML = offerIconsArr[iconIdx % offerIconsArr.length] + `<strong>${label}:</strong> ${desc}`;
           offersList.appendChild(li);
+          iconIdx++;
         }
       }
     }

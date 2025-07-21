@@ -55,7 +55,7 @@
         Individuální přístup ke každému klientovi.;
 
         Důvěra:;
-        Pojištění profesní odpovědnosti.
+        Pojištění profesní odpovědnosti.;
 
         Pohodlí:;
         Vše vyřešíme za vás.;
