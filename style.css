@@ -64,13 +64,15 @@ nav a:hover {
 
 /* Hero */
 .hero {
-  background: url('assets/hero.jpg') center/cover no-repeat;
-  color: white;
-  height: 400px;
+  min-height: 400px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: center;      /* Center horizontally */
+  text-align: center;           /* Center text inside */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
   position: relative;
 }
 
@@ -84,6 +86,8 @@ nav a:hover {
 .hero-content {
   position: relative;
   z-index: 2;
+  width: 100%;
+  /* Optional: add a background or overlay for readability */
 }
 
 .hero h1 {
