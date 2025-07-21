@@ -6,14 +6,14 @@
 
     #Info boxes
     
-        Účetnictví;
-        Kompletní vedení účetnictví včetně závěrek a přiznání.;
+        Daňové poradenství;
+        Poskytujeme poradenství v oblasti daní.;
 
-        Mzdy;
-        Zpracování mezd, personalistika a komunikace s úřady.;
+        Auditorská činnost;
+        V rámci našich služeb nabízíme i služby auditorské.;
 
-        Daňě;
-        Daňová přiznání, optimalizace a poradenství;
+        Komplexní účetní servis;
+        Zpracujeme vám i vaše účetní dokumenty.;
 
 
 #About page
