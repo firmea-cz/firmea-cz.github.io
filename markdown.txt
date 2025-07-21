@@ -1,35 +1,67 @@
-Jsme firma poskytující ekonomické služby právnickým osobám různých právních forem i předmětů podnikání.
-Máme zkušenosti se službami v oblasti auditu, účetnictví, mzdové agendy a daní.
-Disponujeme kvalifikovanými odborníky, včetně daňových poradců a auditora s mnohaletými zkušenostmi v oboru.
-Spolupracujeme s advokátní kanceláří, pracovníci píší v němčině, mluví a píší v angličtině.;
+#Home page
 
-Naší formou práce je pravidelný přímý kontakt s klientem uskutečňovaný zejména formou konzultací k účetním a daňovým problémům a dokonalá znalost místních podmínek.
-Mezi klienty patří fyzické i právnické osoby, obchodní korporace, osobní obchodní společnosti.
-Cílem v oblasti daní je pomoci klientovi najít pro něj optimální a časově přijatelné řešení v návaznosti na daňovou legislativu a tím mu ušetřit čas a prostředky nutné pro jeho činnost.;
+    #Hero text
 
-Provádíme ověřování účetních závěrek, výročních zpráv a zpráv o vztazích mezi propojenými osobami.
-Při naší práci klademe důraz na využití poznatků získaných v průběhu auditu ve prospěch klienta, pro nápravu zjištěných nedostatků a optimalizaci.
-Mezi naše klienty patří společnosti z nejrůznějších oborů, zejména podnikatelské subjekty působící v různých odvětvích výrobního a zpracovatelského průmyslu, obchodu a služeb.
-Splňujeme veškeré zákonné povinnosti a dodržujeme Mezinárodní auditorské standardy.;
+        Nabízíme komplexní účetní a daňové služby v Plzni a okolí.;
 
-Kompletně zpracujeme veškerou účetní a mzdovou agendu od prvotních dokladů po sestavení účetní závěrky a daňových přiznání.
-Veškeré služby provádíme individuálně na míru požadavkům každého klienta, průběžně poskytujeme aktuální informace o stavu pohledávek a závazků klientů v souladu s jejich požadavky.
-V případě potřeby pracujeme on-line na softwaru klienta.;
+    #Info boxes
+    
+        Účetnictví;
+        Kompletní vedení účetnictví včetně závěrek a přiznání.;
 
-Kvalita:;
-Vysoká kvalita účetnictví za příznivou cenu.;
+        Mzdy;
+        Zpracování mezd, personalistika a komunikace s úřady.;
 
-Jednání:;
-Individuální přístup ke každému klientovi.;
+        Daňě;
+        Daňová přiznání, optimalizace a poradenství;
 
-Důvěra:;
-Pojištění profesní odpovědnosti.
 
-Pohodlí:;
-Vše vyřešíme za vás.;
+#About page
 
-Spolehlivost:;
-Bez poplatků za převzetí účetnictví.;
+    #O nás:
 
-Jistota:;
-Daňové přiznání připravuje daňový poradce.;
+        #Firmea s.r.o.
+
+            Jsme firma poskytující ekonomické služby právnickým osobám různých právních forem i předmětů podnikání.
+            Máme zkušenosti se službami v oblasti auditu, účetnictví, mzdové agendy a daní.
+            Disponujeme kvalifikovanými odborníky, včetně daňových poradců a auditora s mnohaletými zkušenostmi v oboru.
+            Spolupracujeme s advokátní kanceláří, pracovníci píší v němčině, mluví a píší v angličtině.;
+
+        #Daňové a účetní poradenství
+            
+            Naší formou práce je pravidelný přímý kontakt s klientem uskutečňovaný zejména formou konzultací k účetním a daňovým problémům a dokonalá znalost místních podmínek.
+            Mezi klienty patří fyzické i právnické osoby, obchodní korporace, osobní obchodní společnosti.
+            Cílem v oblasti daní je pomoci klientovi najít pro něj optimální a časově přijatelné řešení v návaznosti na daňovou legislativu a tím mu ušetřit čas a prostředky nutné pro jeho činnost.;
+
+        #Audit
+
+            Provádíme ověřování účetních závěrek, výročních zpráv a zpráv o vztazích mezi propojenými osobami.
+            Při naší práci klademe důraz na využití poznatků získaných v průběhu auditu ve prospěch klienta, pro nápravu zjištěných nedostatků a optimalizaci.
+            Mezi naše klienty patří společnosti z nejrůznějších oborů, zejména podnikatelské subjekty působící v různých odvětvích výrobního a zpracovatelského průmyslu, obchodu a služeb.
+            Splňujeme veškeré zákonné povinnosti a dodržujeme Mezinárodní auditorské standardy.;
+
+        #Účetnictví a mzdy
+
+            Kompletně zpracujeme veškerou účetní a mzdovou agendu od prvotních dokladů po sestavení účetní závěrky a daňových přiznání.
+            Veškeré služby provádíme individuálně na míru požadavkům každého klienta, průběžně poskytujeme aktuální informace o stavu pohledávek a závazků klientů v souladu s jejich požadavky.
+            V případě potřeby pracujeme on-line na softwaru klienta.;
+
+    #Co nabízíme
+
+        Kvalita:;
+        Vysoká kvalita účetnictví za příznivou cenu.;
+
+        Jednání:;
+        Individuální přístup ke každému klientovi.;
+
+        Důvěra:;
+        Pojištění profesní odpovědnosti.
+
+        Pohodlí:;
+        Vše vyřešíme za vás.;
+
+        Spolehlivost:;
+        Bez poplatků za převzetí účetnictví.;
+
+        Jistota:;
+        Daňové přiznání připravuje daňový poradce.;
