@@ -131,6 +131,8 @@ fetch('blog.txt')
 function parseLikes(text) {
   const likes = {};
   text.split(';').forEach(line => {
+    line = line.trim(); // <-- Add this line
+    if (!line) return;  // <-- And this line
     const match = line.match(/^(\d+)\{(\d+)\}$/);
     if (match) likes[parseInt(match[1], 10)] = parseInt(match[2], 10);
   });
@@ -242,6 +244,8 @@ Promise.all([
   // Parse comments
   const commentsRaw = {};
   commentsText.split(';').forEach(line => {
+    line = line.trim();
+    if (!line) return;
     const match = line.match(/^(\d+)\{([\s\S]*)\}$/);
     if (match) commentsRaw[parseInt(match[1], 10)] = match[2];
   });
@@ -277,7 +281,7 @@ Promise.all([
     html += `<div class="blog-content">${content.replace(/\n/g, '<br>')}</div>`;
 
     // Likes
-    const likeCount = likes[idx + 1] || 0;
+    const likeCount = likes[idx + 1] !== undefined ? likes[idx + 1] : 0;
     html += `<div class="blog-likes">👍 <span>${likeCount}</span></div>`;
 
     // Comments
@@ -285,9 +289,6 @@ Promise.all([
     if (commentsStr) {
       const commentsTree = parseComments(commentsStr);
       html += `<div class="blog-comments-section"><strong>Komentáře:</strong><br>${renderComments(commentsTree)}</div>`;
-      html += `<br>`;
-      html += `<br>`;
-      html += `<br>`;
     }
 
     html += `</div>`;
