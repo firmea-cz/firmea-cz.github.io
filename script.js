@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
 fetch('markdown.txt')
   .then(response => response.text())
   .then(text => {
+    // Ignore lines starting with #
+    text = text
+      .split('\n')
+      .filter(line => !line.trim().startsWith('#'))
+      .join('\n');
+
     // Split paragraphs by semicolon and trim
     const paragraphs = text
       .split(';')
