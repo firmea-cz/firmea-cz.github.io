@@ -126,3 +126,167 @@ fetch('blog.txt')
       return html;
     }).join('');
   });
+
+// Helper: Parse likes file into {postIndex: likeCount}
+function parseLikes(text) {
+  const likes = {};
+  text.split(';').forEach(line => {
+    const match = line.match(/^(\d+)\{(\d+)\}$/);
+    if (match) likes[parseInt(match[1], 10)] = parseInt(match[2], 10);
+  });
+  return likes;
+}
+
+// Helper: Parse comments recursively
+function parseComments(str) {
+  // Remove leading/trailing whitespace and outermost braces if present
+  str = str.trim();
+  if (str.startsWith('{') && str.endsWith('}')) str = str.slice(1, -1);
+
+  let comments = [];
+  let depth = 0, start = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '{') depth++;
+    if (str[i] === '}') depth--;
+    if (str[i] === '}' && depth === 0) {
+      let comment = str.slice(start, i + 1);
+      comments.push(comment);
+      start = i + 1;
+    }
+  }
+  // If no nested comments, split by }{
+  if (comments.length === 0 && str) {
+    comments = str.split('}{').map(s => `{${s}}`);
+  }
+  return comments.map(c => parseCommentNode(c));
+}
+
+function parseCommentNode(str) {
+  // Remove outermost braces if present
+  str = str.trim();
+  if (str.startsWith('{') && str.endsWith('}')) str = str.slice(1, -1);
+
+  // Find the first top-level '{'
+  let firstBrace = -1, depth = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '{') {
+      if (depth === 0) {
+        firstBrace = i;
+        break;
+      }
+      depth++;
+    } else if (str[i] === '}') {
+      depth--;
+    }
+  }
+
+  if (firstBrace === -1) {
+    // No replies, just text
+    return { text: str, replies: [] };
+  }
+
+  // The text before the first '{' is the comment text
+  let text = str.slice(0, firstBrace).trim();
+  let repliesStr = str.slice(firstBrace);
+
+  // Now parse all top-level replies
+  let replies = [];
+  depth = 0;
+  let start = 0;
+  for (let i = 0; i < repliesStr.length; i++) {
+    if (repliesStr[i] === '{') {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (repliesStr[i] === '}') {
+      depth--;
+      if (depth === 0) {
+        let reply = repliesStr.slice(start, i + 1);
+        replies.push(parseCommentNode(reply));
+      }
+    }
+  }
+  return {
+    text,
+    replies
+  };
+}
+
+// Render comments recursively
+function renderComments(comments, level = 0) {
+  if (!comments || comments.length === 0) return '';
+  return `<ul class="blog-comments">` + comments.map(c =>
+    `<li>
+      <div class="comment-text" style="margin-left:${level * 20}px">${c.text}</div>
+      ${renderComments(c.replies, level + 1)}
+    </li>`
+  ).join('') + `</ul>`;
+}
+
+// Convert comments to plain text
+function commentsToPlainText(comments, level = 0) {
+  return comments.map(c =>
+    ' '.repeat(level * 4) + c.text + '\n' + commentsToPlainText(c.replies, level + 1)
+  ).join('');
+}
+
+// Load likes and comments, then render blog posts
+Promise.all([
+  fetch('blog.txt').then(r => r.text()),
+  fetch('data/blog-likes.txt').then(r => r.text()),
+  fetch('data/blog-comments.txt').then(r => r.text())
+]).then(([blogText, likesText, commentsText]) => {
+  // Parse likes
+  const likes = parseLikes(likesText);
+
+  // Parse comments
+  const commentsRaw = {};
+  commentsText.split(';').forEach(line => {
+    const match = line.match(/^(\d+)\{([\s\S]*)\}$/);
+    if (match) commentsRaw[parseInt(match[1], 10)] = match[2];
+  });
+
+  // Split blog posts by semicolon
+  const posts = blogText.split(';').map(p => p.trim()).filter(p => p.length > 0);
+  const blogEntries = document.getElementById('blog-entries');
+  if (!blogEntries) return;
+
+  blogEntries.innerHTML = posts.map((post, idx) => {
+    // Extract fields
+    const titleMatch = post.match(/"([^"]+)"/);
+    const authorMatch = post.match(/@([^@]+)@/);
+    const dateMatch = post.match(/\[([^\]]+)\]/);
+    const timeMatch = post.match(/\{([^\}]+)\}/);
+    const imageMatch = post.match(/<([^>]+)>/);
+    let content = post
+      .replace(/"[^"]+"/, '')
+      .replace(/@[^@]+@/, '')
+      .replace(/\[[^\]]+\]/, '')
+      .replace(/\{[^\}]+\}/, '')
+      .replace(/<[^>]+>/, '')
+      .trim();
+
+    let html = `<div class="blog-post">`;
+    if (titleMatch) html += `<h3>${titleMatch[1]}</h3>`;
+    html += `<div class="blog-meta">`;
+    if (authorMatch) html += `<span class="blog-author">${authorMatch[1]}</span>`;
+    if (dateMatch) html += `<span class="blog-date">${dateMatch[1]}</span>`;
+    if (timeMatch) html += `<span class="blog-time">${timeMatch[1]}</span>`;
+    html += `</div>`;
+    if (imageMatch) html += `<img class="blog-image" src="assets/blog/${imageMatch[1]}" alt="">`;
+    html += `<div class="blog-content">${content.replace(/\n/g, '<br>')}</div>`;
+
+    // Likes
+    const likeCount = likes[idx + 1] || 0;
+    html += `<div class="blog-likes">👍 <span>${likeCount}</span></div>`;
+
+    // Comments
+    const commentsStr = commentsRaw[idx + 1];
+    if (commentsStr) {
+      const commentsTree = parseComments(commentsStr);
+      html += `<div class="blog-comments-section"><strong>Komentáře:</strong>${renderComments(commentsTree)}</div>`;
+    }
+
+    html += `</div>`;
+    return html;
+  }).join('');
+});

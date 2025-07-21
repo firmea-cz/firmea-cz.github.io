@@ -1,2 +1,2 @@
-1{comment 1{1st reply to comment 1{1st reply to 1st reply to comment 1{1st reply to 1st reply to 1st reply to comment 1}}}{2nd reply to comment 1{1st reply to 2nd reply to comment 1}}}{comment 2{1st reply to comment 2}};
+1{comment 1{1st reply to comment 1{1st reply to 1st reply to comment 1{1st reply to 1st reply to 1st reply to comment 1}}}}{2nd reply to comment 1{1st reply to 2nd reply to comment 1}}{comment 2{1st reply to comment 2}};
 2{comment to 2nd blog post};
