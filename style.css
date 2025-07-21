@@ -205,17 +205,31 @@ footer a {
 
 .blog-comments {
   list-style: none;
-  padding-left: 20px;
+  padding-left: 0;
   margin: 8px 0 0 0;
+}
+
+.blog-comments ul {
+  padding-left: 20px;
+  border-left: 2px solid #eee;
+  margin-left: 10px;
 }
 
 .blog-comments li {
   margin-bottom: 8px;
-  border-left: 2px solid #eee;
-  padding-left: 10px;
 }
 
 .comment-text {
   font-size: 15px;
   color: #222;
+}
+
+.reply-btn {
+  margin-top: 4px;
+  font-size: 13px;
+  padding: 2px 10px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  background: #f7f7f7;
+  cursor: pointer;
 }

@@ -139,26 +139,26 @@ function parseLikes(text) {
 
 // Helper: Parse comments recursively
 function parseComments(str) {
-  // Remove leading/trailing whitespace and outermost braces if present
   str = str.trim();
-  if (str.startsWith('{') && str.endsWith('}')) str = str.slice(1, -1);
-
-  let comments = [];
+  if (!str) return [];
+  if (!str.startsWith('{')) str = '{' + str + '}';
+  
+  // Return an array of top-level comment nodes
+  const comments = [];
   let depth = 0, start = 0;
   for (let i = 0; i < str.length; i++) {
-    if (str[i] === '{') depth++;
-    if (str[i] === '}') depth--;
-    if (str[i] === '}' && depth === 0) {
-      let comment = str.slice(start, i + 1);
-      comments.push(comment);
-      start = i + 1;
+    if (str[i] === '{') {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (str[i] === '}') {
+      depth--;
+      if (depth === 0) {
+        const node = str.slice(start, i + 1);
+        comments.push(parseCommentNode(node));
+      }
     }
   }
-  // If no nested comments, split by }{
-  if (comments.length === 0 && str) {
-    comments = str.split('}{').map(s => `{${s}}`);
-  }
-  return comments.map(c => parseCommentNode(c));
+  return comments;
 }
 
 function parseCommentNode(str) {
@@ -212,12 +212,13 @@ function parseCommentNode(str) {
 }
 
 // Render comments recursively
-function renderComments(comments, level = 0) {
+function renderComments(comments) {
   if (!comments || comments.length === 0) return '';
   return `<ul class="blog-comments">` + comments.map(c =>
     `<li>
-      <div class="comment-text" style="margin-left:${level * 20}px">${c.text}</div>
-      ${renderComments(c.replies, level + 1)}
+      <div class="comment-text">${c.text}</div>
+      <button class="reply-btn">Odpovědět</button>
+      ${renderComments(c.replies)}
     </li>`
   ).join('') + `</ul>`;
 }
@@ -283,7 +284,10 @@ Promise.all([
     const commentsStr = commentsRaw[idx + 1];
     if (commentsStr) {
       const commentsTree = parseComments(commentsStr);
-      html += `<div class="blog-comments-section"><strong>Komentáře:</strong>${renderComments(commentsTree)}</div>`;
+      html += `<div class="blog-comments-section"><strong>Komentáře:</strong><br>${renderComments(commentsTree)}</div>`;
+      html += `<br>`;
+      html += `<br>`;
+      html += `<br>`;
     }
 
     html += `</div>`;
