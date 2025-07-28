@@ -237,3 +237,55 @@ footer a {
   background: #f7f7f7;
   cursor: pointer;
 }
+
+.contact-section {
+  padding: 40px 0;
+}
+
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.contact-form, .contact-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.contact-form input, .contact-form textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-form .btn {
+  margin-top: 15px;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-info h3 {
+  margin-top: 20px;
+}
+
+.contact-info .social-icons i {
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: #555;
+}
