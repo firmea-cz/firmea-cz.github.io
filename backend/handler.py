@@ -34,6 +34,7 @@ class Handler(SimpleHTTPRequestHandler, ApiEndpoints):
     def do_POST(self):
         if self.path == "/message/send":
             self.message_send()
+            return
 
         # fallback to default handler
         return super().do_POST()
