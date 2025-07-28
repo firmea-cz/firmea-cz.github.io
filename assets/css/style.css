@@ -244,13 +244,19 @@ footer a {
 
 .contact-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   gap: 40px;
+  align-items: flex-start;
 }
 
-.contact-form, .contact-info {
-  flex: 1;
-  min-width: 300px;
+.contact-form {
+  flex: 1 1 0;
+  max-width: 500px;
+}
+
+.contact-info {
+  flex: 1 1 0;
+  max-width: 400px;
 }
 
 .contact-form form {
@@ -288,4 +294,93 @@ footer a {
   margin-right: 10px;
   cursor: pointer;
   color: #555;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-form, .contact-info {
+    max-width: 100%;
+  }
+}
+
+.kontakt-wrapper {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section-heading {
+  font-size: 36px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.kontakt-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.kontakt-info, .kontakt-form {
+  flex: 1 1 450px;
+}
+
+.kontakt-info h3 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+.kontakt-info p {
+  margin: 5px 0 15px;
+}
+
+.social-icons i {
+  font-size: 26px;
+  margin-right: 12px;
+  color: #555;
+  cursor: pointer;
+}
+
+.kontakt-form p {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.kontakt-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.kontakt-form input,
+.kontakt-form textarea {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.robot-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.kontakt-form .btn {
+  padding: 12px;
+  background: #005baa;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.kontakt-form .btn:hover {
+  background: #004488;
 }
