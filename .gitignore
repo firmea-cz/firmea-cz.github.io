@@ -1,1 +1,3 @@
-/logs
+frontend/data/*
+/backend/data/*
+backend/__pycache__

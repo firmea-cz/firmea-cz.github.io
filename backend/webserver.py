@@ -5,19 +5,15 @@ import http.server
 import socketserver
 from pathlib import Path
 import datetime
+import functools
 import sys # For logging console output
+from handler import Handler  # Add this import
 
 HOST = "localhost"
 PORT = 8000
 
-if os.name == 'nt':  # Windows
-    LOGS_DIR = '.\logs'
-
-else:  # Unix-like systems
-    LOGS_DIR = './logs'
-
 # --- Logger Setup ---
-LOGS_DIR = Path(__file__).parent.resolve() / 'logs'
+LOGS_DIR = Path(__file__).parent.resolve() / 'data' / 'logs'
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Daily log filename (e.g., 2025-06-28.log)
@@ -69,27 +65,29 @@ logger.info("Logging directly to dated file: %s", log_filename)
 if __name__ == "__main__":
     print("--- Starting Webserver ---")
 
-    # Server setup using ThreadingMixIn for basic concurrency
     class ThreadingHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
-        daemon_threads = True # Allow shutdown even if threads are running
-        allow_reuse_address = True # Allow quick restarts
+        daemon_threads = True
+        allow_reuse_address = True
 
-    httpd = ThreadingHTTPServer((HOST, PORT), http.server.SimpleHTTPRequestHandler)
+    # Define the directory to serve files from (the 'frontend' folder)
+    frontend_dir = Path(__file__).parent.parent / 'frontend'
 
-    print(f"\nServing HTTP on {HOST}:{PORT}...")
+    # Create a handler that serves files from the specified directory.
+    # We use functools.partial to pre-set the 'directory' argument for our Handler
+    # before it's used by the server.
+    handler_factory = functools.partial(Handler, directory=str(frontend_dir))
+
+    httpd = ThreadingHTTPServer((HOST, PORT), handler_factory)
+
+    print(f"\nServing HTTP on {HOST}:{PORT} from '{frontend_dir}'...")
     print(f"\nAccess the application via: http://{HOST}:{PORT}/")
     print("-------------------------------------------------------------")
     print("")
-
 
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("\n--- KeyboardInterrupt received, shutting down server ---")
-        # Attempt a final save on shutdown? Can be risky if shutdown is forced.
-        # print("Attempting final data save...")
-        # if not save_data_to_sql():
-        #    print("!!! Warning: Failed to save data on shutdown.")
     finally:
         # Ensure server is properly shut down
         httpd.shutdown()
