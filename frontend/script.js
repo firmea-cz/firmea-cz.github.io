@@ -299,7 +299,7 @@ Promise.all([
     const commentsStr = commentsRaw[idx + 1];
     if (commentsStr) {
       const commentsTree = parseComments(commentsStr);
-      html += `<div class="blog-comments-section"><strong>Komentáře:</strong><br>${renderComments(commentsTree)}</div>`;
+      html += `<div class="blog-comments-section"><strong>Komentáře:</strong><br><button class="comment-btn">Přidat komentář</button><br>${renderComments(commentsTree)}</div>`;
     }
 
     html += `</div>`;
