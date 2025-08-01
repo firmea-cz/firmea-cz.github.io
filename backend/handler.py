@@ -7,6 +7,29 @@ import random
 import cookies
 
 class ApiEndpoints():
+    class Get():
+        def cookies_initial_set(self):
+            name = "InitialCookie"
+            value = ""
+
+            i = 0
+            characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            while i < 10:
+                value = value + characters[random.randrange(len(characters))-1]
+                i += 1
+
+            cookies.cookie_create(name, value)
+            self.send_response(200, value)
+            return
+    
+    class Delete():
+        def cookies_clear(self):
+            name = self.headers.get('Cookie-Name', '')
+            headers = cookies.cookie_clear(name)
+            for header in headers:
+                self.send_header(*header)
+            self.end_headers()
+            return
     class Post():
         def message_send(self):
             content_length = int(self.headers['Content-Length'])
@@ -45,23 +68,19 @@ class ApiEndpoints():
 
 class Handler(SimpleHTTPRequestHandler, ApiEndpoints):
     def do_GET(self):
-        if self.path in ["/", "/script.js", "/blog.txt", "/markdown.txt"] or self.path.startswith("/assets/" or "/data/"):
+        if (
+            self.path in ["/", "/script.js", "/blog.txt", "/markdown.txt"]
+            or self.path.startswith("/assets/")
+            or self.path.startswith("/data/")
+        ):
 
             if self.path == "/":
-                self.path = 'index.html'
+                self.path = '/index.html'
 
             return super().do_GET()
 
         if self.path == "/cookies/initial/set":
-            name = "InitialCookie"
-
-            i = 0
-            characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-            while i < 10:
-                value = value + characters[random.randrange(len(characters)-1)]
-
-            cookies.cookie_create(name, value)
-            self.send_response(200, value)
+            self.cookies_initial_set()
             return
 
         else:# Handle other file requests or return a 404
@@ -69,11 +88,7 @@ class Handler(SimpleHTTPRequestHandler, ApiEndpoints):
 
     def do_DELETE(self):
         if self.path == "/cookies/clear":
-            name = self.headers.get('Cookie-Name', '')
-            headers = cookies.cookie_clear(name)
-            for header in headers:
-                self.send_header(*header)
-            self.end_headers()
+            self.cookies_clear()
             return
         
         else:
