@@ -26,25 +26,25 @@ class Handler(SimpleHTTPRequestHandler):
     def blog_like(self):
         return blog_like(self)
 
-    def do_GET(self):
-        if (
-            self.path in ["/", "/script.js", "/blog.txt", "/markdown.txt"]
-            or self.path.startswith("/assets/")
-            or self.path.startswith("/data/")
-        ):
+    # def do_GET(self):
+    #     if (
+    #         self.path in ["/", "/script.js", "/blog.txt", "/markdown.txt"]
+    #         or self.path.startswith("/assets/")
+    #         or self.path.startswith("/data/")
+    #     ):
 
-            if self.path == "/":
-                self.path = '/index.html'
-                self.cookies_initial_set()
+    #         if self.path == "/":
+    #             self.path = '/index.html'
+    #             self.cookies_initial_set()
 
-            return super().do_GET()
+    #         return super().do_GET()
 
-        if self.path == "/cookies/initial/set":
-            self.cookies_initial_set()
-            return
+    #     elif self.path == "/cookies/initial/set":
+    #         self.cookies_initial_set()
+    #         return
 
-        else:# Handle other file requests or return a 404
-            return self.send_error(404, "Not Found") # If no matching endpoint, send 404
+    #     else:# Handle other file requests or return a 404
+    #         return self.send_error(404, "Not Found") # If no matching endpoint, send 404
 
     def do_DELETE(self):
         if self.path == "/cookies/clear":
