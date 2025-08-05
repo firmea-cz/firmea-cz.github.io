@@ -409,4 +409,7 @@ footer a {
   columns: 3;
   -webkit-columns: 3;
   -moz-columns: 3;
+  text-align: left;
+  padding-left: 0;
+  list-style-position: inside;
 }
