@@ -21,13 +21,15 @@
   <!-- Navigation -->
   <header class="header">
     <div class="container nav">
-      <div class="logo">FIRMEA</div>
+      <div class="logo">
+        <img src="assets/page/Firmeal.png" alt="Firmea s.r.o. logo" style="height:40px;">
+      </div>
       <nav>
         <a href="" onclick="showSection('home')">Domů</a>
         <a href="#.about" onclick="showSection('about')">O nás</a>
         <a href="#.services" onclick="showSection('services')">Služby</a>
         <a href="#.pricing" onclick="showSection('pricing')">Ceník</a>
-        <a href="#.blog" onclick="showSection('blog')">Blog</a>
+        <!-- <a href="#.blog" onclick="showSection('blog')">Blog</a> -->
         <a href="#.contact" onclick="showSection('contact')">Kontakt</a>
       </nav>
     </div>
@@ -56,6 +58,29 @@
         <div class="box">
           <h2>Komplexní účetní servis</h2>
           <p>Zpracujeme vám i vaše účetní dokumenty.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2>Vnitřní oznamovací systém</h2>
+        <a href="./assets/downloads/Vnitřní oznamovací systém_ke zveřejnění na internetových stránkách.pdf">
+          <button class="btn" style="margin-top: 10px;">Otevřít</button>
+        </a>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2>Reference</h2>
+        <div class="grid">
+          <div class="reference-item">
+            <p>Naše služby využívá mnoho spokojených klientů.</p>
+          </div>
+          <div class="reference-item" style="margin-left: 30px;">
+            <ul id="reference-list" class="reference-columns" style="text-align: left;">
+              <!-- Reference companies will be loaded by script.js -->
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -157,13 +182,13 @@
       <div class="contact-grid">
         <div class="contact-form">
           <p>Pokud Vás naše nabídka zaujala, neváhejte a zavolejte nám nebo se stavte v naší kanceláři na konzultaci. Preferujeme pravidelný a přímý kontakt s klientem.</p>
-          <form method="POST" action="/message/send">
+          <!-- <form method="POST" action="/message/send">
             <input type="text" name="name" placeholder="Vaše jméno" required>
             <input type="email" name="email" placeholder="Váš email" required>
             <textarea name="message" rows="6" placeholder="Vaše zpráva" required></textarea>
             <label class="robot-check"><input type="checkbox" required> Nejsem robot</label>
             <button type="submit" class="btn">Odeslat</button>
-          </form>
+          </form> -->
         </div>
         <div class="contact-info">
           <h3>Adresa kanceláře</h3>

@@ -29,8 +29,7 @@ fetch('markdown.txt')
     // Split paragraphs by semicolon and trim
     const paragraphs = text
       .split(';')
-      .map(p => p.trim())
-      .filter(p => p.length > 0);
+      .map(p => p.trim());
 
     // --- HOME PAGE ---
     // Hero text
@@ -68,10 +67,10 @@ fetch('markdown.txt')
     }
 
     // --- ABOUT PAGE ---
-    if (paragraphs[7]) document.getElementById('about-paragraph-1').innerHTML = paragraphs[7].replace(/\n/g, '<br>');
-    if (paragraphs[8]) document.getElementById('about-paragraph-2').innerHTML = paragraphs[8].replace(/\n/g, '<br>');
-    if (paragraphs[9]) document.getElementById('about-paragraph-3').innerHTML = paragraphs[9].replace(/\n/g, '<br>');
-    if (paragraphs[10]) document.getElementById('about-paragraph-4').innerHTML = paragraphs[10].replace(/\n/g, '<br>');
+    if (paragraphs[8]) document.getElementById('about-paragraph-1').innerHTML = paragraphs[8].replace(/\n/g, '<br>');
+    if (paragraphs[9]) document.getElementById('about-paragraph-2').innerHTML = paragraphs[9].replace(/\n/g, '<br>');
+    if (paragraphs[10]) document.getElementById('about-paragraph-3').innerHTML = paragraphs[10].replace(/\n/g, '<br>');
+    if (paragraphs[11]) document.getElementById('about-paragraph-4').innerHTML = paragraphs[11].replace(/\n/g, '<br>');
 
     // --- OFFERS ---
     const offerIconsArr = [
@@ -86,7 +85,7 @@ fetch('markdown.txt')
     const offersList = document.getElementById('offers-list');
     if (offersList) {
       let iconIdx = 0;
-      for (let i = 11; i < paragraphs.length; i += 2) {
+      for (let i = 12; i < paragraphs.length; i += 2) {
         if (paragraphs[i] && paragraphs[i + 1]) {
           const label = paragraphs[i].replace(':', '').trim();
           const desc = paragraphs[i + 1].trim();
@@ -96,6 +95,20 @@ fetch('markdown.txt')
           iconIdx++;
         }
       }
+    }
+
+    // --- REFERENCES ---
+    const refList = document.getElementById('reference-list');
+    if (refList) {
+      const refBlock = paragraphs[7] || '';
+      const references = refBlock
+        .split('\n')
+        .map(line => line.trim().replace(/;$/, '')) // remove trailing semicolon if present
+        .filter(line => line.length > 0);
+
+      refList.innerHTML = references
+        .map(r => `<li>${r}</li>`)
+        .join('');
     }
   });
 

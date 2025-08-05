@@ -1,90 +1,50 @@
 from http.server import SimpleHTTPRequestHandler
-import urllib.parse
-from pathlib import Path
-import datetime
-import random
 
-import cookies
+from api_delete import cookies_clear
+from api_get import cookies_initial_set
+from api_post import message_send, blog_comment, blog_comment_reply, blog_like
 
-class ApiEndpoints():
-    class Get():
-        def cookies_initial_set(self):
-            name = "InitialCookie"
-            value = ""
+class Handler(SimpleHTTPRequestHandler):
+    def __init__(self, *args, directory=None, **kwargs):
+        super().__init__(*args, directory=directory, **kwargs)
 
-            i = 0
-            characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-            while i < 10:
-                value = value + characters[random.randrange(len(characters))-1]
-                i += 1
+    def cookies_initial_set(self):
+        return cookies_initial_set(self)
 
-            cookies.cookie_create(name, value)
-            self.send_response(200, value)
-            return
-    
-    class Delete():
-        def cookies_clear(self):
-            name = self.headers.get('Cookie-Name', '')
-            headers = cookies.cookie_clear(name)
-            for header in headers:
-                self.send_header(*header)
-            self.end_headers()
-            return
-    class Post():
-        def message_send(self):
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
-            fields = urllib.parse.parse_qs(post_data.decode())
+    def cookies_clear(self):
+        return cookies_clear(self)
 
-            name = fields.get('name', [''])[0]
-            email = fields.get('email', [''])[0]
-            message = fields.get('message', [''])[0]
-            timestamp = datetime.datetime.now().isoformat()
+    def message_send(self):
+        return message_send(self)
 
-            # Construct path relative to this file for robustness
-            data_dir = Path(__file__).parent / "data"
-            data_dir.mkdir(exist_ok=True)
-            messages_path = data_dir / "messages.txt"
+    def blog_comment(self):
+        return blog_comment(self)
 
-            # Save to file
-            with open(messages_path, "a", encoding="utf-8") as f:
-                f.write(f"[{timestamp}] {name} <{email}>:\n{message}\n\n")
+    def blog_comment_reply(self):
+        return blog_comment_reply(self)
 
-            # Respond with simple HTML
-            self.send_response(200)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            self.wfile.write("<html><body><h2>Děkujeme za zprávu!</h2><a href='/'>Zpět na hlavní stránku</a></body></html>".encode("utf-8"))
-            return
-        
-        def blog_comment(self):
-            return
-        
-        def blog_comment_reply(self):
-            return
-        
-        def blog_like(self):
-            return
+    def blog_like(self):
+        return blog_like(self)
 
-class Handler(SimpleHTTPRequestHandler, ApiEndpoints):
-    def do_GET(self):
-        if (
-            self.path in ["/", "/script.js", "/blog.txt", "/markdown.txt"]
-            or self.path.startswith("/assets/")
-            or self.path.startswith("/data/")
-        ):
+    # def do_GET(self):
+    #     if (
+    #         self.path in ["/", "/script.js", "/blog.txt", "/markdown.txt"]
+    #         or self.path.startswith("/assets/")
+    #         or self.path.startswith("/data/")
+    #     ):
 
-            if self.path == "/":
-                self.path = '/index.html'
+    #         if self.path == "/":
+    #             self.path = '/index.html'
+    #             self.cookies_initial_set()
 
-            return super().do_GET()
+    #         return super().do_GET()
 
-        if self.path == "/cookies/initial/set":
-            self.cookies_initial_set()
-            return
+    #     elif self.path == "/cookies/initial/set":
+    #         self.cookies_initial_set()
+    #         return
 
-        else:# Handle other file requests or return a 404
-            return self.send_error(404, "Not Found") # If no matching endpoint, send 404
+    #     else:# Handle other file requests or return a 404
+    #         return self.send_error(404, "Not Found") # If no matching endpoint, send 404
 
     def do_DELETE(self):
         if self.path == "/cookies/clear":

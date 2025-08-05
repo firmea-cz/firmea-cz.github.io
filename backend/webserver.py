@@ -69,8 +69,8 @@ if __name__ == "__main__":
         daemon_threads = True
         allow_reuse_address = True
 
-    # Define the directory to serve files from (the 'frontend' folder)
-    frontend_dir = Path(__file__).parent.parent / 'frontend'
+    # Define the directory to serve files from (the 'docs' folder)
+    frontend_dir = Path(__file__).parent.parent / 'docs'
 
     # Create a handler that serves files from the specified directory.
     # We use functools.partial to pre-set the 'directory' argument for our Handler

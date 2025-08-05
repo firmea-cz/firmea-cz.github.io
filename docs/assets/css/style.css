@@ -404,3 +404,12 @@ footer a {
 .kontakt-form .btn:hover {
   background: #004488;
 }
+
+.reference-columns {
+  columns: 3;
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  text-align: left;
+  padding-left: 0;
+  list-style-position: inside;
+}
