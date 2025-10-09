@@ -110,6 +110,41 @@ fetch('markdown.txt')
         .map(r => `<li>${r}</li>`)
         .join('');
     }
+
+    // --- SERVICES PAGE ---
+    // Find the correct indices for services paragraphs
+    // After filtering out headings, the services paragraphs are:
+    // Účetnictví a mzdy: paragraphs[24]
+    // Daňové poradenství: paragraphs[25]
+    // Audit: paragraphs[26]
+
+    if (paragraphs[24]) {
+      document.getElementById('services-paragraph-1').innerHTML =
+        `<ul>${paragraphs[24]
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line)
+          .map(line => `<li>${line.replace(/^[•\s]+/, '')}</li>`)
+          .join('')}</ul>`;
+    }
+    if (paragraphs[25]) {
+      document.getElementById('services-paragraph-2').innerHTML =
+        `<ul>${paragraphs[25]
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line)
+          .map(line => `<li>${line.replace(/^[•\s]+/, '')}</li>`)
+          .join('')}</ul>`;
+    }
+    if (paragraphs[26]) {
+      document.getElementById('services-paragraph-3').innerHTML =
+        `<ul>${paragraphs[26]
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line)
+          .map(line => `<li>${line.replace(/^[•\s]+/, '')}</li>`)
+          .join('')}</ul>`;
+    }
   });
 
 // BLOG SECTION: Load and render blog posts from blog.txt
