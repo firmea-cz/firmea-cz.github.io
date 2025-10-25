@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Firmea s.r.o.</title>
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="assets/css/all.min.css" />
+  <!-- <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="assets/css/all.min.css" /> -->
+  <!-- Font Awesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
 </head>
 <body>
 
@@ -45,7 +50,7 @@
       </div>
     </div>
 
-    <section class="info-boxes">
+    <section class="info-boxes" onclick="showSection('services')" >
       <div class="container grid">
         <div class="box">
           <h2>Daňové poradenství</h2>
@@ -76,7 +81,7 @@
           <div class="reference-item">
             <p>Naše služby využívá mnoho spokojených klientů.</p>
           </div>
-          <div class="reference-item" style="margin-left: 30px;">
+          <div class="reference-item">
             <ul id="reference-list" class="reference-columns" style="text-align: left;">
               <!-- Reference companies will be loaded by script.js -->
             </ul>
@@ -89,11 +94,11 @@
   <!-- SECTION: ABOUT -->
   <section id="about" style="display: none;">
     <div class="container">
-      <h2>O nás</h2>
+      <!-- <h2>O nás</h2> -->
       <div id="about-paragraphs"></div>
       
       <div class="about-grid">
-        <div>
+        <div class="box">
           <h3 style="margin-bottom: 20px">Firmea s.r.o.</h3>
           <p id="about-paragraph-1"></p>
         </div>
@@ -102,14 +107,14 @@
       
       <div class="about-grid">
         <img src="assets/page/tn_711.jpg" alt="Tým" />
-        <div>
+        <div class="box">
           <h3 style="margin-bottom: 20px">Daňové a účetní poradenství</h3>
           <p id="about-paragraph-2"></p>
         </div>
       </div>
 
       <div class="about-grid">
-        <div>
+        <div class="box">
           <h3 style="margin-bottom: 20px">Audit</h3>
           <p id="about-paragraph-3"></p>
         </div>
@@ -118,7 +123,7 @@
 
       <div class="about-grid">
         <img src="assets/page/tn_3103.jpg" alt="Účetnictví" />
-        <div>
+        <div class="box">
           <h3 style="margin-bottom: 20px">Účetnictví a mzdy</h3>
           <p id="about-paragraph-4"></p>
         </div>
@@ -128,7 +133,7 @@
           <h3>Co nabízíme</h3>
           <br>
         </div>
-        <ul class="offers" id="offers-list">
+        <ul class="offers" id="offers-list" style="margin-left: 10px; list-style: none;">
           <!-- Icons and offers will be loaded by script.js -->
         </ul>
       </div>
@@ -138,22 +143,22 @@
   <!-- SECTION: SERVICES -->
   <section id="services" style="display: none;">
     <div class="container">
-      <h2>Služby</h2>
+      <h2 style="margin-bottom: 20px;">Služby</h2>
       <div class="services-grid">
         <div class="service-item">
           <i class="fa fa-calculator"></i>
           <h3>Účetnictví</h3>
-          <p id="services-paragraph-1"></p>
+          <p id="services-paragraph-1" style="margin-left: 20px; margin-bottom: 20px;"></p>
         </div>
         <div class="service-item">
           <i class="fa fa-file-invoice"></i>
           <h3>Daňové poradenství</h3>
-          <p id="services-paragraph-2"></p>
+          <p id="services-paragraph-2" style="margin-left: 20px; margin-bottom: 20px;"></p>
         </div>
         <div class="service-item">
           <i class="fa fa-chart-line"></i>
           <h3>Audit</h3>
-          <p id="services-paragraph-3"></p>
+          <p id="services-paragraph-3" style="margin-left: 20px; margin-bottom: 20px;"></p>
         </div>
       </div>
     </div>
@@ -212,20 +217,23 @@
       <p>Email: <a href="mailto:firmea@firmea.cz">firmea@firmea.cz</a></p>
     </div>
   </footer>
-
-  <!-- SCRIPT: Section Switcher -->
-  <script>
-    function showSection(id) {
-      document.querySelectorAll("section").forEach(section => {
-        if (section.id) {
-          section.style.display = section.id === id ? "block" : "none";
-        }
-      });
-    }
-  </script>
-
-  <!-- Add this script before </body> -->
-  <script src="script.js"></script>
-
 </body>
 </html>
+
+<script src="script.js"></script>
+
+<!-- SCRIPT: Section Switcher -->
+<script>
+  function showSection(id) {
+    document.querySelectorAll("section").forEach(section => {
+      if (section.id) {
+        section.style.display = section.id === id ? "block" : "none";
+      }
+    });
+  }
+
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = 'assets/css/style.css?v=' + Date.now();
+  document.head.appendChild(css);
+</script>

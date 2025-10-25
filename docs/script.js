@@ -17,19 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Fetch and display paragraphs from markdown.txt in the #about section
-fetch('markdown.txt')
+fetch('markdown.txt', { cache: 'no-store' })
   .then(response => response.text())
   .then(text => {
-    // Ignore lines starting with #
+    // Ignore lines starting with # and trim each line
     text = text
       .split('\n')
-      .filter(line => !line.trim().startsWith('#'))
+      .map(line => line.trim())
+      .filter(line => line && !line.startsWith('#'))
       .join('\n');
 
     // Split paragraphs by semicolon and trim
     const paragraphs = text
       .split(';')
-      .map(p => p.trim());
+      .map(p => p.trim())
+      .filter(p => p.length > 0);
 
     // --- HOME PAGE ---
     // Hero text
@@ -85,7 +87,7 @@ fetch('markdown.txt')
     const offersList = document.getElementById('offers-list');
     if (offersList) {
       let iconIdx = 0;
-      for (let i = 12; i < paragraphs.length; i += 2) {
+      for (let i = 12; i < 24; i += 2) { //TODO: fix hardcoded 24
         if (paragraphs[i] && paragraphs[i + 1]) {
           const label = paragraphs[i].replace(':', '').trim();
           const desc = paragraphs[i + 1].trim();

@@ -2,7 +2,7 @@
 
     #Hero text
 
-        Nabízíme komplexní účetní a daňové služby v Plzni a okolí.;
+        Nabízíme komplexní účetní, daňové a auditorské služby v Plzni a okolí.;
 
     #Info boxes
     
@@ -82,21 +82,19 @@
 #Servicies page
 
     #Účetnictví a mzdy
+        • zpracování účetnictví a daňové evidence,
+        • zpracování měsíčních reportů,
+        • zpracování roční účetní závěrky v souladu s tuzemskou právní úpravou,
+        • kompletní zpracování mzdové agendy,
+        • zastupování klienta při jednání s finančním úřadem, zdravotními pojišťovnami a úřady sociálního zabezpečení.;
 
+    #Daňové poradenství
         • zpracování daňového přiznání k dani z příjmu právnických osob,
         • zpracování daňového přiznání OSVČ a dalších fyzických osob,
         • elektronické podání daňových přiznání a hlášení na finanční úřad na základě plné moci,
         • kontrola podkladů pro přiznání k dani z příjmů a jejich případná korekce,
         • poradenství v oblasti daně z přidané hodnoty, mezinárodního zdanění,
         • konzultace v ostatních oblastech daňového práva na základě domluvy.;
-
-    #Daňové poradenství
-
-        • zpracování účetnictví a daňové evidence,
-        • zpracování měsíčních reportů,
-        • zpracování roční účetní závěrky v souladu s tuzemskou právní úpravou,
-        • kompletní zpracování mzdové agendy,
-        • zastupování klienta při jednání s finančním úřadem, zdravotními pojišťovnami a úřady sociálního zabezpečení.;
 
     #Audit
 
