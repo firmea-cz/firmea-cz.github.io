@@ -1,3 +1,4 @@
 frontend/data/*
 /backend/data/*
 backend/__pycache__
+.DS_Store

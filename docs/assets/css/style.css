@@ -138,7 +138,7 @@ nav a:hover {
   border-radius: 8px;
 }
 
-.box h2 {
+.box h2, h3 {
   margin-bottom: 10px;
   color: #004080;
 }
@@ -406,10 +406,21 @@ footer a {
 }
 
 .reference-columns {
-  columns: 3;
-  -webkit-columns: 3;
-  -moz-columns: 3;
-  text-align: left;
-  padding-left: 0;
-  list-style-position: inside;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 40px; /* 20px vertical, 40px horizontal */
+  list-style: none;
+  padding: 0;
+}
+
+.reference-columns li {
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+i {
+  color: #004080;
+  height: 30px;
+  width: 40px;
 }
