@@ -31,7 +31,8 @@ fetch('markdown.txt', { cache: 'no-store' })
     const paragraphs = text
       .split(';')
       .map(p => p.trim())
-      .filter(p => p.length > 0);
+      .filter(p => p.length > 0)
+      .map(p => p.replace(/<br>/g, '<br>'));
 
     // --- HOME PAGE ---
     // Hero text
