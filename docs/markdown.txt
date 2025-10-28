@@ -50,7 +50,7 @@
 
         #Audit
 
-            Poskytujeme komplexní auditorské služby podle české legislativy i Mezinárodních auditorských standardů. Audit pro nás není jen rutinní záležitost, zaměřujeme se na klienta jako celek a na základě poznatků získaných v průběhu auditu vás upozorníme na možné vylepšení vnitřních kontrol, doporučíme efektivnější nastavení interních účetních postupů.
+            Poskytujeme komplexní auditorské služby podle české legislativy i Mezinárodních auditorských standardů. Audit pro nás není jen rutinní záležitost, zaměřujeme se na klienta jako celek a na základě poznatků získaných v průběhu auditu vás upozorníme na možné vylepšení vnitřních kontrol, doporučíme efektivnější nastavení interních účetních postupů. <br>
             Mezi naše klienty patří společnosti z nejrůznějších oborů, zejména podnikatelské subjekty působící v různých odvětvích výrobního a zpracovatelského průmyslu, obchodu a služeb.
             Splňujeme veškeré zákonné povinnosti a dodržujeme Mezinárodní auditorské standardy.;
 
